@@ -1,0 +1,16 @@
+//(ctrl cmd g)
+
+//captures arrow name
+var arrowName = [[selection firstObject] name];
+var view = [doc currentView];
+
+//takes all artboards
+var artboards = [[doc currentPage] artboards];
+var artboardToGo;
+for(var i = 0; i < [artboards length]; i++){
+	artboardToGo = artboards[i];
+	if([artboardToGo name] == arrowName){
+		[view zoomToFitRect:[artboardToGo absoluteRect]]
+		[artboardToGo select]
+	}
+}

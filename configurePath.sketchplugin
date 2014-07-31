@@ -1,0 +1,29 @@
+//(ctrl cmd c)
+
+if([selection count] != 2){
+	[doc showMessage:"Select an artboard and a Line"];
+} else {
+	var arrow = null;
+	var artb = null;
+
+	var loop = [selection objectEnumerator]
+	while (layer = [loop nextObject]) {
+		if([layer class] == 'MSArtboardGroup'){
+			artb = layer;
+			log([layer class])
+		} else  if([layer class] == 'MSShapeGroup'){
+			arrow = layer
+			log([layer class])
+		}
+	}
+
+
+	if(artb == null){
+		[doc showMessage:"It only works if you select an artboard and a Line"];
+	} else {
+		[arrow setName:[artb name]]
+		log('Artboard: '+ [artb name]);
+		log('Arrow: '+ [arrow name]);
+	}
+
+}
